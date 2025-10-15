@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="پرتال مجموعه غذایی لذیذ - دسترسی سریع به سیستم‌ها و خدمات">
+    <meta name="theme-color" content="#2c3e50">
+    <title>پرتال مجموعه غذایی لذیذ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://example.com">
+    <link rel="dns-prefetch" href="https://example.com">
+</head>
+<body>
+    <!-- آیکون‌های SVG inline -->
+    <svg style="display:none">
+        <defs>
+            <symbol id="icon-folder" viewBox="0 0 24 24">
+                <path d="M10 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-8l-2-2z" fill="currentColor"/>
+            </symbol>
+            <symbol id="icon-link" viewBox="0 0 24 24">
+                <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/>
+            </symbol>
+            <symbol id="icon-search" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+            </symbol>
+            <symbol id="icon-chevron" viewBox="0 0 24 24">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" fill="currentColor"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- هدر -->
+    <header class="header">
+        <h1 class="header__title">پرتال مجموعه غذایی لذیذ</h1>
+        <p class="header__subtitle">دسترسی سریع به سیستم‌ها و خدمات</p>
+    </header>
+
+    <!-- نوار جستجو -->
+    <nav class="search-bar" role="search" aria-label="جستجو در پرتال">
+        <div class="search-container">
+            <svg class="search-icon" width="20" height="20">
+                <use href="#icon-search"></use>
+            </svg>
+            <input 
+                type="search" 
+                id="searchInput" 
+                class="search-input" 
+                placeholder="جستجو در پرتال..."
+                aria-label="جستجوی موارد"
+                autocomplete="off"
+            >
+            <span id="searchResults" class="search-results" aria-live="polite"></span>
+        </div>
+    </nav>
+
+    <!-- بردکرامب -->
+    <nav id="breadcrumb" class="breadcrumb" aria-label="مسیر فعلی" hidden>
+        <ol class="breadcrumb__list"></ol>
+    </nav>
+
+    <!-- محتوای اصلی -->
+    <main class="main-content">
+        <div id="portalContent" class="portal-list" role="tree" aria-label="لیست خدمات پرتال">
+            <!-- محتوا با جاوااسکریپت پر می‌شود -->
+        </div>
+        
+        <div id="loadingMessage" class="message message--loading" hidden>
+            <div class="spinner"></div>
+            <span>در حال بارگذاری...</span>
+        </div>
+        
+        <div id="errorMessage" class="message message--error" hidden role="alert">
+            <span>خطا در بارگذاری داده‌ها. لطفاً صفحه را مجدد بارگذاری کنید.</span>
+        </div>
+        
+        <div id="noResultsMessage" class="message message--info" hidden>
+            <span>موردی یافت نشد</span>
+        </div>
+    </main>
+
+    <!-- فوتر -->
+    <footer class="footer">
+        <p>&copy; <span id="currentYear"></span> مجموعه غذایی لذیذ - تمامی حقوق محفوظ است</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

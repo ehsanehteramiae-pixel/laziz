@@ -1,0 +1,115 @@
+{
+  "title": "پرتال مجموعه غذایی لذیذ",
+  "items": [
+    {
+      "type": "category",
+      "title": "اتوماسیون اداری",
+      "children": [
+        {
+          "type": "link",
+          "title": "ورود به اتوماسیون اداری",
+          "url": "https://example.com/automation"
+        },
+        {
+          "type": "link",
+          "title": "پنل مدیریت",
+          "url": "https://example.com/admin"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "title": "فرم‌های شعبات",
+      "children": [
+        {
+          "type": "link",
+          "title": "شعبه آزادگان",
+          "url": "https://example.com/forms/azadegan"
+        },
+        {
+          "type": "link",
+          "title": "شعبه دلگشا",
+          "url": "https://example.com/forms/delgosha"
+        },
+        {
+          "type": "link",
+          "title": "شعبه رسالت",
+          "url": "https://example.com/forms/resalat"
+        },
+        {
+          "type": "category",
+          "title": "فرم‌های مشترک",
+          "children": [
+            {
+              "type": "link",
+              "title": "فرم ثبت سفارش",
+              "url": "https://example.com/forms/order"
+            },
+            {
+              "type": "link",
+              "title": "فرم گزارش روزانه",
+              "url": "https://example.com/forms/daily-report"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "title": "درخواست‌ها",
+      "children": [
+        {
+          "type": "link",
+          "title": "درخواست مرخصی",
+          "url": "https://example.com/requests/leave"
+        },
+        {
+          "type": "link",
+          "title": "درخواست اضافه‌کار",
+          "url": "https://example.com/requests/overtime"
+        },
+        {
+          "type": "link",
+          "title": "درخواست وام",
+          "url": "https://example.com/requests/loan"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "title": "سیستم‌های مالی",
+      "children": [
+        {
+          "type": "link",
+          "title": "حسابداری",
+          "url": "https://example.com/accounting"
+        },
+        {
+          "type": "link",
+          "title": "انبارداری",
+          "url": "https://example.com/inventory"
+        },
+        {
+          "type": "link",
+          "title": "گزارشات مالی",
+          "url": "https://example.com/financial-reports"
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "title": "ارتباط با مدیرعامل",
+      "url": "https://example.com/ceo-contact"
+    },
+    {
+      "type": "link",
+      "title": "ثبت تیکت پشتیبانی",
+      "url": "https://example.com/ticket"
+    },
+    {
+      "type": "link",
+      "title": "راهنمای استفاده از پرتال",
+      "url": "https://example.com/help"
+    }
+  ]
+}
