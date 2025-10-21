@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>پرتال مجموعه غذایی لذیذ</title>
+
+  <!-- فونت فارسی سبک -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --purple-900:#44146a;
+      --purple-700:#5b1f8f;
+      --purple-500:#7e41bf;
+      --purple-300:#b28ce6;
+      --purple-100:#efe8fb;
+      --white:#ffffff;
+      --neon:#ff7cf1; /* درخشش صورتیِ لطیف */
+      --radius-xl:22px;
+      --radius-2xl:28px;
+      --shadow-soft:0 10px 30px rgba(68,20,106,.18);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Vazirmatn",system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:
+        radial-gradient(1200px 800px at 90% -10%, rgba(126,65,191,.18), transparent 60%),
+        radial-gradient(900px 600px at -10% 20%, rgba(178,140,230,.18), transparent 50%),
+        linear-gradient(180deg, #faf8ff, #f5f1ff 40%, #fdfcff);
+      color:#1a1025;
+    }
+
+    /* نگارینه ایرانی خیلی ظریف */
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      background-image:
+        radial-gradient(circle at 20px 20px, rgba(92,40,130,.06) 2px, transparent 2.5px),
+        radial-gradient(circle at 40px 40px, rgba(92,40,130,.04) 2px, transparent 2.5px);
+      background-size:80px 80px;
+      pointer-events:none; opacity:.4;
+      mask-image:linear-gradient(180deg, transparent, #000 10%, #000 85%, transparent 100%);
+    }
+
+    .wrap{max-width:940px; margin:auto; padding:18px; min-height:100%}
+
+    .topbar{
+      position:relative;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
+      background:linear-gradient(135deg, var(--purple-900), var(--purple-700));
+      color:var(--white);
+      padding:16px 18px;
+      border-radius:36px;
+      box-shadow:0 12px 30px rgba(45,0,90,.25);
+    }
+    .brand{
+      display:flex; align-items:center; gap:14px;
+    }
+    .logo{
+      width:64px; height:64px; flex:0 0 64px;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), transparent 40%),
+        linear-gradient(135deg, #6c2aa3, #3f0e67);
+      border:3px solid rgba(255,255,255,.2);
+      box-shadow:inset 0 0 18px rgba(255,255,255,.18), 0 8px 16px rgba(0,0,0,.25);
+      position:relative;
+    }
+    /* جای عکس لوگو: اگر فایل دارید، آدرس را جایگزین کنید */
+    /* .logo{background: url('logo.png') center/cover no-repeat;} */
+
+    .brand h1{
+      font-size:20px; margin:0; font-weight:800; letter-spacing:.2px;
+    }
+    .brand small{display:block; font-weight:300; opacity:.9}
+
+    .views{
+      margin-top:26px;
+      background:rgba(255,255,255,.65);
+      backdrop-filter:saturate(140%) blur(6px);
+      border-radius:var(--radius-2xl);
+      padding:22px 14px 30px;
+      box-shadow:var(--shadow-soft);
+      overflow:hidden;
+    }
+
+    .header-chip{
+      margin:8px auto 18px;
+      width:max-content;
+      padding:10px 22px;
+      border-radius:999px;
+      background:linear-gradient(180deg, #7748c4, #5e2ca6);
+      color:#fff; font-weight:700;
+      box-shadow:0 6px 18px rgba(110,54,180,.35);
+    }
+
+    .grid{
+      display:grid; gap:14px;
+      grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
+      align-items:stretch;
+    }
+
+    .tile, .btn, .back{
+      display:flex; align-items:center; justify-content:center; text-align:center;
+      gap:10px; text-decoration:none; cursor:pointer; user-select:none;
+      border:none; outline:0;
+      padding:14px 16px; border-radius:999px;
+      font-size:16px; font-weight:700;
+      color:#fff; background:linear-gradient(180deg, #7a4cc8, #5b2aa8);
+      box-shadow:
+        0 6px 14px rgba(91,42,168,.35),
+        inset 0 -2px 0 rgba(0,0,0,.08),
+        0 0 0 0 rgba(255,124,241,0);
+      transition:transform .12s ease, box-shadow .18s ease, filter .18s ease;
+    }
+    .tile:hover, .btn:hover, .back:hover{
+      transform:translateY(-2px);
+      box-shadow:
+        0 12px 24px rgba(91,42,168,.38),
+        inset 0 -2px 0 rgba(0,0,0,.06),
+        0 0 14px 2px rgba(255,124,241,.35);
+      filter:saturate(115%);
+    }
+    .tile:active, .btn:active, .back:active{transform:translateY(0)}
+
+    /* کاشی‌های صفحه اصلی: امکان گذاشتن تصویر */
+    .tile{
+      position:relative; overflow:hidden;
+    }
+    .tile::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(120px 80px at 85% 20%, rgba(255,255,255,.22), transparent 60%);
+      pointer-events:none;
+    }
+    /* هوک برای عکس اختصاصی هر دسته (در صورت نیاز آدرس را در background-image جایگزین کنید) */
+    .tile.icon-azadegan{background-image:linear-gradient(180deg,#7a4cc8cc,#5b2aa8cc), var(--azadegan, none); background-blend-mode:overlay;}
+    .tile.icon-delgosha{background-image:linear-gradient(180deg,#7a4cc8cc,#5b2aa8cc), var(--delgosha, none);}
+    .tile.icon-resalat{background-image:linear-gradient(180deg,#7a4cc8cc,#5b2aa8cc), var(--resalat, none);}
+    .tile.icon-tolid{background-image:linear-gradient(180deg,#7a4cc8cc,#5b2aa8cc), var(--tolid, none);}
+    .tile.icon-anbar{background-image:linear-gradient(180deg,#7a4cc8cc,#5b2aa8cc), var(--anbar, none);}
+    .tile.icon-herasat{background-image:linear-gradient(180deg,#7a4cc8cc,#5b2aa8cc), var(--herasat, none);}
+    .tile.icon-tasisat{background-image:linear-gradient(180deg,#7a4cc8cc,#5b2aa8cc), var(--tasisat, none);}
+    .tile{background-size:cover; background-position:center}
+
+    .stack{display:flex; flex-direction:column; gap:12px; max-width:640px; margin:0 auto}
+    .back{
+      margin:18px auto 0; width:200px;
+      background:linear-gradient(180deg, #6a3bb7, #4f2396);
+    }
+
+    .view{display:none; animation:fade .25s ease}
+    .view.active{display:block}
+    @keyframes fade {from{opacity:.0; transform:translateY(6px)} to{opacity:1; transform:none}}
+
+    footer{
+      margin:22px auto 10px; text-align:center; color:#5d4e78; font-size:13px
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>پرتال مجموعه غذایی لذیذ</h1>
+          <small>تأسیس ۱۳۸۴</small>
+        </div>
+      </div>
+    </header>
+
+    <main class="views">
+      <!-- خانه -->
+      <section id="home" class="view active" aria-labelledby="home-title">
+        <div class="header-chip" id="home-title">صفحه اصلی</div>
+        <div class="grid">
+          <button class="tile icon-azadegan" data-goto="azadegan" aria-label="آزادگان">آزادگان</button>
+          <button class="tile icon-delgosha"  data-goto="delgosha" aria-label="دلگشا">دلگشا</button>
+          <button class="tile icon-resalat"   data-goto="resalat"  aria-label="رسالت">رسالت</button>
+          <button class="tile icon-tolid"     data-goto="tolid"    aria-label="تولید">تولید</button>
+          <button class="tile icon-anbar"     data-goto="anbar"    aria-label="انبار و سردخانه‌ها">انبار و سردخانه‌ها</button>
+          <button class="tile icon-herasat"   data-goto="herasat"  aria-label="حراست">حراست</button>
+          <button class="tile icon-tasisat"   data-goto="tasisat"  aria-label="تأسیسات">تأسیسات</button>
+        </div>
+      </section>
+
+      <!-- آزادگان -->
+      <section id="azadegan" class="view" aria-labelledby="azadegan-title">
+        <div class="header-chip" id="azadegan-title">آزادگان</div>
+        <div class="stack">
+          <a class="btn" href="https://survey.porsline.ir/s/zVjvJaE" target="_blank" rel="noopener">کنترل روزانه شعبه</a>
+          <a class="btn" href="https://survey.porsline.ir/" target="_blank" rel="noopener">تحویل شیفت بعد از ظهر</a>
+          <a class="btn" href="https://survey.porsline.ir/s/0sJGGwi" target="_blank" rel="noopener">کنترل پایان شیفت شعبه</a>
+          <a class="btn" href="https://survey.porsline.ir/s/Ff4G05D" target="_blank" rel="noopener">کنترل کیفیت روزانه غذا</a>
+          <a class="btn" href="https://survey.porsline.ir/s/U7vjYdH" target="_blank" rel="noopener">بهداشت فردی پرسنل شعبه</a>
+          <a class="btn" href="https://survey.porsline.ir/s/WmMPphB" target="_blank" rel="noopener">بهداشت فردی پرسنل پیک</a>
+          <a class="btn" href="https://survey.porsline.ir/s/xeJovH2" target="_blank" rel="noopener">ثبت تعمیرات و درخواست نیروی تاسیسات</a>
+          <a class="btn" href="https://survey.porsline.ir/" target="_blank" rel="noopener">نظافت هفتگی شعبه</a>
+        </div>
+        <button class="back" data-goto="home">بازگشت</button>
+      </section>
+
+      <!-- دلگشا -->
+      <section id="delgosha" class="view" aria-labelledby="delgosha-title">
+        <div class="header-chip" id="delgosha-title">دلگشا</div>
+        <div class="stack">
+          <a class="btn" href="https://survey.porsline.ir/s/c2SbxyI" target="_blank" rel="noopener">کنترل روزانه شعبه</a>
+          <a class="btn" href="https://survey.porsline.ir/" target="_blank" rel="noopener">تحویل شیفت بعد از ظهر</a>
+          <a class="btn" href="https://survey.porsline.ir/s/zsNoSin" target="_blank" rel="noopener">کنترل پایان شیفت شعبه</a>
+          <a class="btn" href="https://survey.porsline.ir/s/Ff4G05D" target="_blank" rel="noopener">کنترل کیفیت روزانه غذا</a>
+          <a class="btn" href="https://survey.porsline.ir/s/tMfWWxJ" target="_blank" rel="noopener">بهداشت فردی پرسنل شعبه</a>
+          <a class="btn" href="https://survey.porsline.ir/s/WmMPphB" target="_blank" rel="noopener">بهداشت فردی پرسنل پیک</a>
+          <a class="btn" href="https://survey.porsline.ir/s/xeJovH2" target="_blank" rel="noopener">ثبت تعمیرات و درخواست نیروی تاسیسات</a>
+          <a class="btn" href="https://survey.porsline.ir/" target="_blank" rel="noopener">نظافت هفتگی شعبه</a>
+        </div>
+        <button class="back" data-goto="home">بازگشت</button>
+      </section>
+
+      <!-- رسالت -->
+      <section id="resalat" class="view" aria-labelledby="resalat-title">
+        <div class="header-chip" id="resalat-title">رسالت</div>
+        <div class="stack">
+          <a class="btn" href="https://survey.porsline.ir/s/g5MbZJq" target="_blank" rel="noopener">کنترل روزانه شعبه</a>
+          <a class="btn" href="https://survey.porsline.ir/" target="_blank" rel="noopener">تحویل شیفت بعد از ظهر</a>
+          <a class="btn" href="https://survey.porsline.ir/s/QoSgy0f" target="_blank" rel="noopener">کنترل پایان شیفت شعبه</a>
+          <a class="btn" href="https://survey.porsline.ir/s/Ff4G05D" target="_blank" rel="noopener">کنترل کیفیت روزانه غذا</a>
+          <a class="btn" href="https://survey.porsline.ir/s/0kI3wku" target="_blank" rel="noopener">بهداشت فردی پرسنل شعبه</a>
+          <a class="btn" href="https://survey.porsline.ir/s/WmMPphB" target="_blank" rel="noopener">بهداشت فردی پرسنل پیک</a>
+          <a class="btn" href="https://survey.porsline.ir/s/xeJovH2" target="_blank" rel="noopener">ثبت تعمیرات و درخواست نیروی تاسیسات</a>
+          <a class="btn" href="https://survey.porsline.ir/" target="_blank" rel="noopener">نظافت هفتگی شعبه</a>
+        </div>
+        <button class="back" data-goto="home">بازگشت</button>
+      </section>
+
+      <!-- تولید -->
+      <section id="tolid" class="view" aria-labelledby="tolid-title">
+        <div class="header-chip" id="tolid-title">تولید</div>
+        <div class="stack">
+          <a class="btn" href="https://survey.porsline.ir/s/lWyspbc" target="_blank" rel="noopener">بهداشت فردی پرسنل</a>
+        </div>
+        <button class="back" data-goto="home">بازگشت</button>
+      </section>
+
+      <!-- انبار و سردخانه‌ها -->
+      <section id="anbar" class="view" aria-labelledby="anbar-title">
+        <div class="header-chip" id="anbar-title">انبار و سردخانه‌ها</div>
+        <div class="stack">
+          <a class="btn" href="https://survey.porsline.ir/s/GHOIrzu" target="_blank" rel="noopener">ثبت و بررسی دمای سردخانه</a>
+          <a class="btn" href="https://survey.porsline.ir/s/bgaLOYD" target="_blank" rel="noopener">کنترل بهداشت سردخانه‌ها</a>
+          <a class="btn" href="https://survey.porsline.ir/s/B5GKcVD" target="_blank" rel="noopener">بهداشت فردی پرسنل</a>
+        </div>
+        <button class="back" data-goto="home">بازگشت</button>
+      </section>
+
+      <!-- حراست -->
+      <section id="herasat" class="view" aria-labelledby="herasat-title">
+        <div class="header-chip" id="herasat-title">حراست</div>
+        <div class="stack">
+          <a class="btn" href="https://survey.porsline.ir/s/abRiyUf" target="_blank" rel="noopener">تحویل خودرو</a>
+          <a class="btn" href="https://survey.porsline.ir/s/zWvOtbF" target="_blank" rel="noopener">بهداشت فردی پرسنل</a>
+        </div>
+        <button class="back" data-goto="home">بازگشت</button>
+      </section>
+
+      <!-- تأسیسات -->
+      <section id="tasisat" class="view" aria-labelledby="tasisat-title">
+        <div class="header-chip" id="tasisat-title">تأسیسات</div>
+        <div class="stack">
+          <a class="btn" href="https://survey.porsline.ir/s/vN2ffxT" target="_blank" rel="noopener">ثبت فعالیت واحد تأسیسات</a>
+        </div>
+        <button class="back" data-goto="home">بازگشت</button>
+      </section>
+    </main>
+
+    <footer>
+      © مجموعه غذایی لذیذ ۱۴۰۴
+    </footer>
+  </div>
+
+  <script>
+    // ناوبری سبک بین نماها (بدون رفرش)
+    const views = [...document.querySelectorAll('.view')];
+    const show = id => {
+      views.forEach(v => v.classList.toggle('active', v.id === id));
+      if (id) history.replaceState(null, '', '#'+id);
+      window.scrollTo({top:0, behavior:'smooth'});
+    };
+    document.addEventListener('click', e=>{
+      const btn = e.target.closest('[data-goto]');
+      if(!btn) return;
+      show(btn.dataset.goto);
+    });
+    // بارگذاری بر اساس hash
+    const initial = location.hash?.replace('#','') || 'home';
+    if (document.getElementById(initial)) show(initial);
+
+    // اگر می‌خواهید برای هر کاشی عکس بگذارید:
+    // document.documentElement.style.setProperty('--azadegan', 'url(azadegan.jpg)');
+    // ... بقیه هم مشابه
+  </script>
+</body>
+</html>
